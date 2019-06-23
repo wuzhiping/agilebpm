@@ -43,7 +43,7 @@ RUN apt-get -q update && \
 ENV LANG C.UTF-8
 WORKDIR /opt
 RUN git clone https://gitee.com/agile-bpm/agile-bpm-basic.git
-WORKDIR agile-bpm-basic
+WORKDIR agile-bpm-basic/web
 
 EXPOSE 8080
 
