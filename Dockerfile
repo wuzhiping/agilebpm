@@ -36,5 +36,15 @@ RUN mvn clean install
 
 #redis-cli mysql-client
 RUN apt-get -q update && \
-    apt-get -y --no-install-recommends install redis-server mysql-client && \
+    apt-get -y --no-install-recommends install vim redis-server mysql-client && \
     rm -rf /var/lib/apt/lists/*
+
+#
+ENV LANG C.UTF-8
+WORKDIR /opt
+RUN git clone https://gitee.com/agile-bpm/agile-bpm-basic.git
+WORKDIR agile-bpm-basic
+
+EXPOSE 8080
+
+#CMD mvn org.mortbay.jetty:maven-jetty-plugin:run
