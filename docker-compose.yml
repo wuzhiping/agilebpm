@@ -1,0 +1,33 @@
+version: '2'
+services:
+  mysqlmaster:
+    image: mysql:5.7.15
+    restart: always
+    hostname: mysqlmaster
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 100861
+    #volumes:
+    #  - ./data/mysql-master:/var/lib/mysql/
+    #  - ./config/mysql-master:/etc/mysql/conf.d/
+  redisdb:
+    image: redis
+    restart: always
+    volumes:
+      - ./redis.conf:/etc/redis/redis.conf
+    command: redis-server /etc/redis/redis.conf
+  agilebpm:
+    image: shawoo/agilebpm
+    restart: always
+    #command: 
+    volumes:
+      - ./application.yml:/opt/agilebpm-base-spring-boo/agilebpm-spring-boot-samples/src/main/resources/application.yml
+    environment:
+      - ENV=dev
+    depends_on:
+      - redisdb
+      - mysqlmaster
+    links:
+      - redisdb
+      - mysqlmaster
