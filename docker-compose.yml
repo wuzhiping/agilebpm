@@ -11,12 +11,27 @@ services:
     #volumes:
     #  - ./data/mysql-master:/var/lib/mysql/
     #  - ./config/mysql-master:/etc/mysql/conf.d/
+    
+  sendmail:
+    image: shawoo/sendmail
+    restart: always
+    hostname: mail.feg.cn
+    stdin_open: true
+    tty: true
+    
+  activemq:
+    image: rmohr/activemq
+    ports:
+      - "61616:61616"
+      - "8161:8161"
+      
   redisdb:
     image: redis
     restart: always
     volumes:
       - ./redis.conf:/etc/redis/redis.conf
     command: redis-server /etc/redis/redis.conf
+    
   agilebpm:
     image: shawoo/agilebpm
     restart: always
@@ -28,6 +43,9 @@ services:
     depends_on:
       - redisdb
       - mysqlmaster
+      - activemq
     links:
       - redisdb
       - mysqlmaster
+      - activemq
+      - sendmail
