@@ -6,4 +6,5 @@
 ~~http://localhost:8080/bpm-explorer~~
 
 docker-compose up -d
+
 http://localhost:8080
