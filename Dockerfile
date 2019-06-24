@@ -49,4 +49,7 @@ RUN mvn clean install
 
 EXPOSE 8080
 
+# /opt/agile-bpm-basic/web/src/main/resources/properties/app-sit.properties
+# /opt/agile-bpm-basic/web/src/main/resources/properties/app-dev.properties
+
 #CMD mvn org.mortbay.jetty:maven-jetty-plugin:run
