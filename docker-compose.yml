@@ -35,6 +35,8 @@ services:
   agilebpm:
     image: shawoo/agilebpm
     restart: always
+    ports:
+      - "8080:8080"
     #command: 
     volumes:
       - ./application.yml:/opt/agilebpm-base-spring-boo/agilebpm-spring-boot-samples/src/main/resources/application.yml
