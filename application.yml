@@ -40,7 +40,7 @@ ab:
     nick-name: AgileBPM
     password: 
     send-host: sendmail
-    send-port: 465
+    send-port: 25
   simple-mq:
     message-queue-type: synchronous
 
