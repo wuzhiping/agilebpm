@@ -1,19 +1,19 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.106.140.247:3306/new_?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
-    username: public
-    password: public
+    url: jdbc:mysql://agilebpm:3306/agilebpm?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 100861
     dbType: mysql
   activemq:
-    broker-url: tcp://127.0.0.1:61616
+    broker-url: tcp://activemq:61616
     in-memory: false
     packages:
       trust-all: true
   redis:
-    host: 47.106.139.29
+    host: redisdb
     port: 6379
-    password: agilebpm_redis_2019
+    password: 
     database: 9
 
 
@@ -36,10 +36,10 @@ ab:
   redis:
     use-redis-cache: false
   mail:
-    mail-address: agileBpm@qq.com
+    mail-address: wuzhiping@qq.com
     nick-name: AgileBPM
-    password: fywouffpohiibdee
-    send-host: smtp.qq.com
+    password: 
+    send-host: sendmail
     send-port: 465
   simple-mq:
     message-queue-type: synchronous
