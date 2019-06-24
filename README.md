@@ -10,7 +10,8 @@ docker-compose up -d mysqlmaster
 docker exec -it agilebpm_mysqlmaster_1 mysql -uroot -p
 #
 CREATE DATABASE IF NOT EXISTS agilebpm DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
-sql 1~n
+
+ mysql -u root -p agilebpm<1~n.sql
 #
 docker-compose up -d
 
