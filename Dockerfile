@@ -52,4 +52,7 @@ EXPOSE 8080
 # /opt/agile-bpm-basic/web/src/main/resources/properties/app-sit.properties
 # /opt/agile-bpm-basic/web/src/main/resources/properties/app-dev.properties
 
+# WORKDIR /opt/agilebpm-base-spring-boot
+
 #CMD mvn org.mortbay.jetty:maven-jetty-plugin:run
+#CMD java -jar agilebpm-spring-boot-samples/target/agilebpm-spring-boot-samples-1.2.1.jar
