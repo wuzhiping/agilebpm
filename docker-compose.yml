@@ -8,9 +8,9 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: 100861
-    #volumes:
-    #  - ./data/mysql-master:/var/lib/mysql/
-    #  - ./config/mysql-master:/etc/mysql/conf.d/
+    volumes:
+      - ./data/mysql-master:/var/lib/mysql/
+      - ./config/mysql-master:/etc/mysql/conf.d/
     
   sendmail:
     image: shawoo/sendmail
