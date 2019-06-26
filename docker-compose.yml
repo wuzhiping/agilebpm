@@ -4,8 +4,6 @@ services:
     image: mysql:5.7.15
     restart: always
     hostname: mysqlmaster
-    ports:
-      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: 100861
     volumes:
@@ -39,7 +37,7 @@ services:
       - "8080:8080"
     #command: 
     volumes:
-      - ./application.yml:/opt/agilebpm-base-spring-boo/agilebpm-spring-boot-samples/src/main/resources/application.yml
+      - ./application.yml:/opt/agilebpm-base-spring-boot/agilebpm-spring-boot-samples/src/main/resources/application.yml
     environment:
       - ENV=dev
     depends_on:
