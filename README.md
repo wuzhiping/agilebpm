@@ -22,7 +22,7 @@ cd /var/lib/mysql
 
 ls
 
-~~# mysql -u root -p agilebpm<./sql/mysql/create/1~n.sql
+~~# mysql -u root -p agilebpm<./sql/mysql/create/1~n.sql~~
 
 # mysql -u root -p agilebpm<agilebpm.sql
 
