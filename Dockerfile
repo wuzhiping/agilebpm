@@ -31,6 +31,8 @@ ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 WORKDIR /opt
 RUN git clone https://gitee.com/agile-bpm/agilebpm-base-spring-boot.git
 
+COPY application.yml /opt/agilebpm-base-spring-boot/agilebpm-spring-boot-samples/src/main/resources/application.yml
+
 WORKDIR agilebpm-base-spring-boot
 RUN mvn clean install
 
