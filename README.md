@@ -9,7 +9,7 @@ docker-compose up -d mysqlmaster
 
 [https://gitee.com/agile-bpm/agile-bpm-basic/tree/master/_doc/mysql](doc_mysql)
 
- mysqldump -h 47.106.140.247 -upublic -p public>public.sql
+~~mysqldump -h 47.106.140.247 -upublic -p public>public.sql~~
 
 docker exec -it agilebpm_mysqlmaster_1 /bin/bash
 #
