@@ -22,15 +22,10 @@ cd /var/lib/mysql
 
 ls
 
-# mysql -u root -p agilebpm<./sql/mysql/create/1~n.sql
+~~# mysql -u root -p agilebpm<./sql/mysql/create/1~n.sql
 
-mysql -u root -p100861 agilebpm<./sql/mysql/create/1.bus-form.create.sql
+# mysql -u root -p agilebpm<agilebpm.sql
 
-mysql -u root -p100861 agilebpm<./sql/mysql/create/2.org.create.sql
-
-mysql -u root -p100861 agilebpm<./sql/mysql/create/3.sys.create.sql
-
-mysql -u root -p100861 agilebpm<./sql/mysql/create/4.wf.create.sql
 
 #
 docker-compose up -d
