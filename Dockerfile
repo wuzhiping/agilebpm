@@ -31,11 +31,6 @@ ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 WORKDIR /opt
 RUN git clone https://gitee.com/agile-bpm/agilebpm-base-spring-boot.git
 
-COPY application.yml /opt/agilebpm-base-spring-boot/agilebpm-spring-boot-samples/src/main/resources/application.yml
-
-WORKDIR agilebpm-base-spring-boot
-RUN mvn clean install
-
 #redis-cli mysql-client
 RUN apt-get -q update && \
     apt-get -y --no-install-recommends install vim redis-server mysql-client && \
@@ -54,5 +49,8 @@ ENV LANG C.UTF-8
 
 EXPOSE 8080
 
+COPY application.yml /opt/agilebpm-base-spring-boot/agilebpm-spring-boot-samples/src/main/resources/application.yml
 WORKDIR /opt/agilebpm-base-spring-boot
+RUN mvn clean install
+
 CMD java -jar agilebpm-spring-boot-samples/target/agilebpm-spring-boot-samples-1.2.1.jar
