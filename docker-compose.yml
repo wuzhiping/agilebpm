@@ -48,6 +48,7 @@ services:
       - "8080:8080"
     #command: 
     volumes:
+      #- ./agilebpm-spring-boot-samples-1.2.0-Beta.jar:/opt/agilebpm-base-spring-boot/agilebpm-spring-boot-samples/target/agilebpm-spring-boot-samples-1.2.1.jar
       - ./application.yml:/opt/agilebpm-base-spring-boot/agilebpm-spring-boot-samples/src/main/resources/application.yml
     environment:
       - ENV=dev
