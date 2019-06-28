@@ -32,8 +32,7 @@ docker-compose up -d
 
 http://localhost:8080
 
-# http://domainName:85
+http://domainName:85
 
-## todo:
-
-  系统不支持当前域名的访问，请联系管理员！
+# agilebpm-ui
+/opt/agilebpm-base-spring-boot/agilebpm-ui/src/main/resources/static/agilebpm-ui
