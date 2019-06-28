@@ -49,6 +49,10 @@ ENV LANG C.UTF-8
 
 EXPOSE 8080
 
+WORKDIR /opt/agilebpm-base-spring-boot/agilebpm-ui/src/main/resources/static/agilebpm-ui
+RUN npm install
+RUN npm run build
+
 COPY application.yml /opt/agilebpm-base-spring-boot/agilebpm-spring-boot-samples/src/main/resources/application.yml
 WORKDIR /opt/agilebpm-base-spring-boot
 RUN mvn clean install
