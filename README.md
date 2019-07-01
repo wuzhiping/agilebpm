@@ -40,3 +40,5 @@ http://domainName:85
 # UI
 
 docker run --rm  -it -v $PWD/bpm-app:/opt/bpm-app -v $PWD/agilebpm-ui:/opt/agilebpm-ui  -w /opt shawoo/bpm /bin/bash
+
+bpm-app/src/service/common/baseService.js
