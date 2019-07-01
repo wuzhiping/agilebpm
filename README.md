@@ -36,3 +36,7 @@ http://domainName:85
 
 # agilebpm-ui
 /opt/agilebpm-base-spring-boot/agilebpm-ui/src/main/resources/static/agilebpm-ui
+
+# UI
+
+docker run --rm  -it -v $PWD/bpm-app:/opt/bpm-app -v $PWD/agilebpm-ui:/opt/agilebpm-ui  -w /opt shawoo/bpm /bin/bash
