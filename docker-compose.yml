@@ -10,7 +10,7 @@ services:
     volumes:
       - ./default.conf:/etc/nginx/conf.d/default.conf
       - ./agilebpm-ui:/home/agilebpm-ui
-
+      - ./bpm-app:/home/bpm-app
   mysqlmaster:
     image: mysql:5.7.15
     restart: always
