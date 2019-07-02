@@ -33,10 +33,13 @@ RUN git clone https://gitee.com/agile-bpm/agilebpm-base-spring-boot.git
 
 #redis-cli mysql-client
 RUN apt-get -q update && \
-    apt-get -y --no-install-recommends install vim nodejs npm redis-server mysql-client && \
+    apt-get -y --no-install-recommends install fontconfig vim nodejs npm redis-server mysql-client && \
     rm -rf /var/lib/apt/lists/*
 
 #
+COPY ./fonts/simsun.ttc /usr/share/fonts/simsun.ttc
+#RUN fc-cache
+
 ENV LANG C.UTF-8
 
 # WORKDIR /opt
