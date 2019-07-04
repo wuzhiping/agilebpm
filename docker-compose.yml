@@ -53,7 +53,7 @@ services:
       #- ./agilebpm-spring-boot-samples-1.2.0-Beta.jar:/opt/agilebpm-base-spring-boot/agilebpm-spring-boot-samples/target/agilebpm-spring-boot-samples-1.2.1.jar
       - ./application.yml:/opt/agilebpm-base-spring-boot/agilebpm-spring-boot-samples/src/main/resources/application.yml
     environment:
-      LANG: en_US.UTF-8
+      LANG: zh_CN.UTF-8
     depends_on:
       - redisdb
       - mysqlmaster
