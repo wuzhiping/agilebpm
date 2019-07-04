@@ -42,6 +42,7 @@ ab:
     password: 
     send-host: sendmail
     send-port: 25
+    SSL: false
   simple-mq:
     message-queue-type: synchronous
 
