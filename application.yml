@@ -30,7 +30,7 @@ server:
 
 ab:
   jwt:
-    enabled: true
+    enabled: false
   security:
     auth-ingores: /login.*,/agilebpm-ui*,/index.html,/swagger-*,/v2/api-docs*,
     csrf-ingores: a.feg.cn,127.0.0.1,localhost
