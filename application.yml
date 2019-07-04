@@ -19,7 +19,7 @@ spring:
 
 logging:
   level:
-    root: INFO
+    root: DEBUG
 server:
   servlet:
     context-path: /
@@ -30,7 +30,7 @@ server:
 
 ab:
   jwt:
-    enabled: false
+    enabled: true
   security:
     auth-ingores: /login.*,/agilebpm-ui*,/index.html,/swagger-*,/v2/api-docs*,
     csrf-ingores: a.feg.cn,127.0.0.1,localhost
