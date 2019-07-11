@@ -41,3 +41,11 @@ http://domainName:85
 ## git clone https://gitee.com/agile-bpm/bpm-app.git
 ## bpm-app/src/service/common/baseService.js
 ## docker run --rm  -it -v $PWD/bpm-app:/opt/bpm-app -w /opt/bpm-app shawoo/bpm npm run build
+
+# Camunda
+
+docker pull camunda/camunda-bpm-platform:latest
+
+docker run --rm -it --name camunda -p 8181:8080 camund
+
+# open browser with url: http://localhost:8181/camunda-welcome/index.html
