@@ -46,6 +46,6 @@ http://domainName:85
 
 docker pull camunda/camunda-bpm-platform:latest
 
-docker run --rm -it --name camunda -p 8181:8080 camund
+docker run --rm -it --name camunda -p 8181:8080 camunda/camunda-bpm-platform:latest
 
 # open browser with url: http://localhost:8181/camunda-welcome/index.html
