@@ -11,6 +11,32 @@ services:
       - ./default.conf:/etc/nginx/conf.d/default.conf
       - ./agilebpm-ui:/home/agilebpm-ui
       - ./bpm-app:/home/bpm-app
+      
+  mongo:
+    image: shawoo/mongo:4
+    restart: always
+    volumes:
+      - ./bson/db:/data/db
+      - ./bson/configdb:/data/configdb
+    command: mongod --port 27017 --bind_ip 0.0.0.0
+
+  express:
+    image: mongo-express
+    restart: always
+    environment:
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=ME
+    links:
+      - mongo
+    ports:
+      - "8081:8081"
+
+  mongoskin:
+    image: shawoo/mongo:4
+    restart: always
+    links:
+      - mongo
+      
   mysqlmaster:
     image: mysql:5.7.15
     restart: always
@@ -20,6 +46,35 @@ services:
     volumes:
       - ./data/mysql-master:/var/lib/mysql/
       - ./config/mysql-master:/etc/mysql/conf.d/
+
+  mysqlslave:
+    image: shawoo/mysql:5.7.15
+    restart: always
+    hostname: mysqlslave
+    environment:
+      - "MYSQL_ROOT_PASSWORD=100861"
+    volumes:
+      #- nfs:/nfs
+      - ./data/mysql-slave:/var/lib/mysql/
+      - ./config/mysql-slave:/etc/mysql/conf.d/
+
+  mysqlclient:
+    image: shawoo/mysql:5.7.15
+    depends_on:
+      - mysqlmaster
+      - mysqlslave
+    environment:
+      - "MYSQL_SLAVE_PASSWORD=100861"
+      - "MYSQL_MASTER_PASSWORD=100861"
+      - "MYSQL_ROOT_PASSWORD=100861"
+      - "MYSQL_REPLICATION_USER=repl"
+      - "MYSQL_REPLICATION_PASSWORD=repl"
+    volumes:
+      #- nfs:/nfs
+      - ./mysql_connector.sh:/tmp/mysql_connector.sh
+    command: /bin/bash  -x /tmp/mysql_connector.sh
+    stdin_open: true
+    tty: true
     
   sendmail:
     image: shawoo/sendmail
@@ -40,6 +95,38 @@ services:
     volumes:
       - ./redis.conf:/etc/redis/redis.conf
     command: redis-server /etc/redis/redis.conf
+
+  mosquitto:
+    image: shawoo/mosquitto 
+    restart: always
+    ports:
+      - "1883:1883"
+
+  bpm:
+    image: shawoo/bpm:hr
+    restart: always
+    command: /bin/bash ./start.sh
+    #node bpm.js
+    volumes:
+      - ./public/:/opt/bpm/public/
+      - ./bpm/BDD/:/opt/bpm/BDD/
+      - ./bpm/bddApi.js:/opt/bpm/bddApi.js
+      - ./bpm/bpm.js:/opt/bpm/bpm.js
+      - ./bpm/start.sh:/opt/bpm/start.sh
+      - ./build/:/opt/bpm/dist/
+    environment:
+      - URI=ateam.feg.cn
+      - ENV=prd
+    depends_on:
+      - mosquitto
+      - redisdb
+      - mysqlmaster
+      - mongo
+    links:
+      - mosquitto
+      - redisdb
+      - mysqlmaster
+      - mongo
     
   agilebpm:
     image: shawoo/agilebpm
